@@ -1,5 +1,4 @@
-from rest_framework import (
-    serializers, viewsets, pagination, mixins, filters, permissions)
+from rest_framework import viewsets, pagination, mixins, filters, permissions
 from rest_framework.generics import get_object_or_404
 
 from posts.models import Post, Group, User
