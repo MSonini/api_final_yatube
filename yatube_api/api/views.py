@@ -1,7 +1,8 @@
-from rest_framework import serializers, viewsets, pagination, mixins, filters
+from rest_framework import (
+    serializers, viewsets, pagination, mixins, filters, permissions)
 from rest_framework.generics import get_object_or_404
 
-from posts.models import Post, Group, Follow, User
+from posts.models import Post, Group, User
 from .serializers import PostSerializer, GroupSerializer
 from .serializers import CommentSerializer, FollowSerializer
 from .permissions import IsOwnerOrReadOnly
@@ -25,7 +26,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [permissions.AllowAny]
 
 
 class CommentViewSet(viewsets.ModelViewSet):
@@ -50,14 +51,10 @@ class FollowViewSet(ListCreateViewSet):
     search_fields = ('following__username',)
 
     def get_queryset(self):
-        followings = Follow.objects.filter(user=self.request.user)
-        return followings
+        return self.request.user.follower
 
     def perform_create(self, serializer):
         user = self.request.user
         username = self.request.data.get('following')
-        if user.username == username:
-            raise serializers.ValidationError(
-                '\'user\' cannot be equal to \'following\'.')
         following = get_object_or_404(User, username=username)
         serializer.save(user=user, following=following)
