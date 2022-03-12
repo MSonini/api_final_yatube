@@ -3,8 +3,11 @@
 REST API для проекта Yatube
 ### Технологии
 Python 3.9
-Django 2.2.19
-Django REST Framework 
+Django 2.2.16
+Django REST Framework 3.12.4
+Simple-JWT 4.7.2
+djangorestframework==3.12.4
+djangorestframework-simplejwt==4.7.2
 ### Запуск в Dev-режиме
 - Установите и активируйте виртуальное окружение
 - Установите зависимости из файла requirements.txt
