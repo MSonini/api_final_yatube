@@ -1,6 +1,6 @@
 # yatube_project
 ### Описание
-REST API для проекта Yatube
+REST API для проекта Yatube.
 ### Технологии
  - Python 3.9
  - Django 2.2.16
@@ -17,5 +17,6 @@ pip install -r requirements.txt
 ```
 python3 manage.py runserver
 ```
+- Для получения полной документации по API перейти в эндпоинт /redoc
 ### Автор
 Сонин Михаил
