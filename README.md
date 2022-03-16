@@ -10,14 +10,22 @@ REST API для проекта Yatube.
  - Simple-JWT 4.7.2
 
 ### Запуск в Dev-режиме
-1. Установите и активируйте виртуальное окружение
-2. Установите зависимости из файла requirements.txt
+1. Установить зависимости из файла requirements.txt:
+
 ```
 pip install -r requirements.txt
-``` 
-3. В папке с файлом manage.py выполните команду:
 ```
-python3 manage.py runserver
+
+2. Выполнить миграции:
+
+```
+python manage.py migrate
+```
+
+3. Запустить проект:
+
+```
+python manage.py runserver
 ```
 ### Автор
 Сонин Михаил
